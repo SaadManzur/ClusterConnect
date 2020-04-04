@@ -18,5 +18,7 @@ Route::post('register', 'Api\UserController@store');
 
 Route::group(['middleware' => 'auth:api'], function() {
 
-    Route::post('update_location', 'Api\UserController@updateLocation');
+    Route::post('user/update_location', 'Api\UserController@updateLocation');
+    Route::post('user/update_address', 'Api\AddressController@updateAddress');
+    Route::get('user/profile', 'Api\UserController@getUserInformation');
 });

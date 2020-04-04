@@ -42,4 +42,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Models\User', 'user_friends', 'user_id', 'friend_id');
     }
+
+    public function address()
+    {
+        return $this->belongsTo('App\Models\Address');
+    }
 }

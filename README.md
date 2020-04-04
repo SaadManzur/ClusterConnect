@@ -17,7 +17,7 @@ Check status codes for errors. Corresponding error message will be provided in t
 ### Login
 
 #### Request
-``` http://localhost:XXXX/api/login ```
+**POST** ``` http://localhost:XXXX/api/login ```
 
 #### Header
 No authorization header required. Set type to json.
@@ -42,7 +42,7 @@ No authorization header required. Set type to json.
 ### Register
 
 #### Request
-``` http://localhost:XXXX/api/register ```
+**POST** ``` http://localhost:XXXX/api/register ```
 
 #### Header
 No authorization header required. Set type to json.
@@ -69,7 +69,7 @@ No authorization header required. Set type to json.
 ### Update Location
 
 #### Request
-``` http://localhost:XXXX/api/update_location ```
+**POST** ``` http://localhost:XXXX/api/user/update_location ```
 
 #### Header
 Pass the bearer token as header.
@@ -85,6 +85,74 @@ Pass the bearer token as header.
 ```
 {
     "data": [],
+    "message": [message, if needed]
+}
+```
+
+### Update Address
+
+#### Request
+**POST** ``` http://localhost:XXXX/api/user/update_address ```
+
+#### Header
+Pass the bearer token as header.
+
+#### Body
+```
+{
+	"street_address1": [max: 255 chars, required],
+	"street_address2": [max: 255 chars],
+	"region": [division, required],
+	"zipcode": [integer, required],
+	"longitude": [float, required], 
+	"latitude": [float, required]
+}
+```
+#### Resoponse
+```
+{
+    "data": [],
+    "message": [message, if needed]
+}
+```
+
+### User Profile
+
+#### Request
+**GET** ``` http://localhost:XXXX/api/user/profile ```
+
+#### Header
+Pass the bearer token as header.
+
+#### Body
+Not required
+
+#### Resoponse
+```
+{
+    "data": {
+        "id": [int],
+        "name": "",
+        "phone": "",
+        "home_longitude": [float],
+        "home_latitude": [float],
+        "longitude": [float],
+        "latitude": [float],
+        "email": [email],
+        "created_at": "2020-04-04 19:55:00",
+        "updated_at": "2020-04-04 20:15:28",
+        "address": {
+            "id": 1,
+            "street_address1": "",
+            "street_address2": "",
+            "region": "",
+            "zipcode": [int],
+            "longitude": [float],
+            "latitude": [float],
+            "created_at": "2020-04-04 19:55:00",
+            "updated_at": "2020-04-04 19:57:46"
+        }
+    },
     "message": [message, if needed]
 }
 ```

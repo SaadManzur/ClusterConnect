@@ -20,7 +20,7 @@ class AuthController extends ApiController
         }
         else {
 
-            return $this->respond([], "Incorrect email or password", 401);
+            return $this->respond([], "Incorrect phone or password", 401);
         }
     }
 }
